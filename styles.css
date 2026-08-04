@@ -1,313 +1,358 @@
 /* RESET */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  html,
-  body {
-    width: 100%;
-    min-height: 100%;
-    overflow-x: hidden;
-  }
-  
-  body {
-    font-family: Georgia, "Times New Roman", serif;
-    background-color: #ffffff;
-  }
-  
-  /* HEADER LOGO APITOTO */
-  .mobile-header {
-    width: 100%;
-    aspect-ratio: 2.345 / 1;
-    overflow: hidden;
-    background-color: #000000;
-  }
-  
-  .header-image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  
-  /* BANNER UTAMA */
-  .main-banner {
-    width: 100%;
-    aspect-ratio: 2 / 1;
-    overflow: hidden;
-    background-color: #000000;
-    border: none;
-  }
-  
-  .main-banner-image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  
-  /* PANEL TOMBOL HITAM */
-  .action-panel {
-    position: relative;
-    isolation: isolate;
-  
-    width: 100%;
-    padding: 10px;
-  
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  
-    background:
-      radial-gradient(
-        ellipse at 50% 0%,
-        rgba(255, 70, 0, 0.1) 0%,
-        rgba(70, 10, 0, 0.06) 38%,
-        transparent 70%
-      ),
-      linear-gradient(
-        180deg,
-        #090909 0%,
-        #020202 48%,
-        #000000 100%
-      );
-  
-    border: none;
-  
-    box-shadow:
-      inset 0 5px 10px rgba(255, 70, 0, 0.05),
-      inset 0 -5px 10px rgba(0, 0, 0, 0.9),
-      0 3px 5px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* HILANGKAN GARIS PANJANG PANEL */
-  .action-panel::before,
-  .action-panel::after {
-    content: none;
-  }
-  
-  /* ANIMASI BINGKAI EMAS */
-  @property --border-angle {
-    syntax: "<angle>";
-    initial-value: 0deg;
-    inherits: false;
-  }
-  
-  /* PENGATURAN DASAR TOMBOL */
-  .action-button {
-    position: relative;
-    z-index: 2;
-  
-    width: 50%;
-    min-height: 52px;
-    padding: 0 10px;
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    border: 1px solid #c77a10;
-    border-radius: 10px;
-  
-    font-size: 18px;
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: 0.6px;
-    text-align: center;
-    text-decoration: none;
-  
-    overflow: hidden;
-  
-    box-shadow:
-      inset 0 0 4px rgba(255, 132, 0, 0.15),
-      0 0 2px rgba(255, 190, 55, 0.75),
-      0 0 5px rgba(255, 75, 0, 0.22);
-  
-    transition:
-      transform 0.15s ease,
-      filter 0.15s ease,
-      box-shadow 0.15s ease;
-  }
-  
-  /* CAHAYA HALUS DI BAGIAN ATAS TOMBOL */
-  .action-button::before {
-    content: "";
-    position: absolute;
-    z-index: 1;
-  
-    top: 2px;
-    right: 7px;
-    left: 7px;
-    height: 42%;
-  
-    border-radius: 7px;
-  
-    background: linear-gradient(
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background-color: #ffffff;
+}
+
+/* HEADER LOGO APITOTO */
+.mobile-header {
+  width: 100%;
+  aspect-ratio: 2.345 / 1;
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.header-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* BANNER UTAMA */
+.main-banner {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  background-color: #000000;
+  border: none;
+}
+
+.main-banner-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* PANEL TOMBOL HITAM */
+.action-panel {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  padding: 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(255, 70, 0, 0.1) 0%,
+      rgba(70, 10, 0, 0.06) 38%,
+      transparent 70%
+    ),
+    linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.18),
-      transparent
-    );
-  
-    pointer-events: none;
-  }
-  
-  /* KILAUAN TIPIS HANYA PADA GARIS TEPI */
-  .action-button::after {
-    content: "";
-    position: absolute;
-    z-index: 3;
-    inset: 0;
-  
-    padding: 1px;
-    border-radius: inherit;
-  
-    background: conic-gradient(
-      from var(--border-angle),
-      #6b2e00 0deg,
-      #cd7600 42deg,
-      #ffe49c 70deg,
-      #ffffff 84deg,
-      #ffd05c 98deg,
-      #9a4800 145deg,
-      #612900 220deg,
-      #ffb31f 292deg,
-      #6b2e00 360deg
-    );
-  
-    -webkit-mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-  
-    mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    mask-composite: exclude;
-  
-    animation: border-shine 3s linear infinite;
-    pointer-events: none;
-  }
-  
-  @keyframes border-shine {
-    to {
-      --border-angle: 360deg;
-    }
-  }
-  
-  /* TOMBOL DAFTAR */
-  .register-button {
-    color: #fff5cf;
-  
-    background: linear-gradient(
-      180deg,
-      #d31313 0%,
-      #910000 48%,
-      #4b0000 100%
-    );
-  
-    text-shadow:
-      0 1px 0 #5d0000,
-      0 0 6px rgba(255, 221, 135, 0.65);
-  }
-  
-  /* TOMBOL LOGIN */
-  .login-button {
-    color: #ffd66c;
-  
-    background: linear-gradient(
-      180deg,
-      #303030 0%,
-      #101010 48%,
+      #090909 0%,
+      #020202 48%,
       #000000 100%
     );
-  
-    text-shadow:
-      0 1px 0 #000000,
-      0 0 7px rgba(255, 173, 42, 0.55);
+
+  border: none;
+
+  box-shadow:
+    inset 0 5px 10px rgba(255, 70, 0, 0.05),
+    inset 0 -5px 10px rgba(0, 0, 0, 0.9),
+    0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* HILANGKAN GARIS PANJANG PANEL */
+.action-panel::before,
+.action-panel::after {
+  content: none;
+}
+
+/* ANIMASI BINGKAI EMAS */
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* PENGATURAN DASAR TOMBOL */
+.action-button {
+  position: relative;
+  z-index: 2;
+
+  width: 50%;
+  min-height: 52px;
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #c77a10;
+  border-radius: 10px;
+
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.6px;
+  text-align: center;
+  text-decoration: none;
+
+  overflow: hidden;
+
+  box-shadow:
+    inset 0 0 4px rgba(255, 132, 0, 0.15),
+    0 0 2px rgba(255, 190, 55, 0.75),
+    0 0 5px rgba(255, 75, 0, 0.22);
+
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+/* CAHAYA HALUS DI BAGIAN ATAS TOMBOL */
+.action-button::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+
+  top: 2px;
+  right: 7px;
+  left: 7px;
+  height: 42%;
+
+  border-radius: 7px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+
+  pointer-events: none;
+}
+
+/* KILAUAN TIPIS HANYA PADA GARIS TEPI */
+.action-button::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+
+  padding: 1px;
+  border-radius: inherit;
+
+  background: conic-gradient(
+    from var(--border-angle),
+    #6b2e00 0deg,
+    #cd7600 42deg,
+    #ffe49c 70deg,
+    #ffffff 84deg,
+    #ffd05c 98deg,
+    #9a4800 145deg,
+    #612900 220deg,
+    #ffb31f 292deg,
+    #6b2e00 360deg
+  );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+
+  animation: border-shine 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes border-shine {
+  to {
+    --border-angle: 360deg;
   }
-  
-  /* TOMBOL SAAT DITEKAN */
-  .action-button:active {
-    transform: scale(0.97);
-    filter: brightness(1.15);
-  
-    box-shadow:
-      inset 0 0 8px rgba(255, 190, 55, 0.35),
-      0 0 4px rgba(255, 91, 0, 0.55);
+}
+
+/* TOMBOL DAFTAR */
+.register-button {
+  color: #fff5cf;
+
+  background: linear-gradient(
+    180deg,
+    #d31313 0%,
+    #910000 48%,
+    #4b0000 100%
+  );
+
+  text-shadow:
+    0 1px 0 #5d0000,
+    0 0 6px rgba(255, 221, 135, 0.65);
+}
+
+/* TOMBOL LOGIN */
+.login-button {
+  color: #ffd66c;
+
+  background: linear-gradient(
+    180deg,
+    #303030 0%,
+    #101010 48%,
+    #000000 100%
+  );
+
+  text-shadow:
+    0 1px 0 #000000,
+    0 0 7px rgba(255, 173, 42, 0.55);
+}
+
+/* TOMBOL SAAT DITEKAN */
+.action-button:active {
+  transform: scale(0.97);
+  filter: brightness(1.15);
+
+  box-shadow:
+    inset 0 0 8px rgba(255, 190, 55, 0.35),
+    0 0 4px rgba(255, 91, 0, 0.55);
+}
+
+/* AREA KONTEN */
+.page-content {
+  width: 100%;
+  min-height: 500px;
+  background-color: #ffffff;
+}
+
+/* HP ANDROID KECIL */
+@media (max-width: 360px) {
+  .action-panel {
+    padding: 8px;
+    gap: 6px;
   }
-  
-  /* AREA KONTEN */
-  .page-content {
-    width: 100%;
-    min-height: 500px;
-    background-color: #ffffff;
+
+  .action-button {
+    min-height: 48px;
+    font-size: 16px;
+    border-radius: 8px;
   }
-  
-  /* HP ANDROID KECIL */
-  @media (max-width: 360px) {
-    .action-panel {
-      padding: 8px;
-      gap: 6px;
-    }
-  
-    .action-button {
-      min-height: 48px;
-      font-size: 16px;
-      border-radius: 8px;
-    }
-  }
-  
-  /* LOGO APITOTO */
-  .mobile-header {
-    display: block;
-    width: 100%;
-    background: #000;
-    overflow: hidden;
-  }
-  
-  .header-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 2.345 / 1;
-    object-fit: cover;
-    object-position: center;
-  }
-  
-  /* SLOGAN */
-  .slogan-banner {
-    display: block;
-    width: 100%;
-    aspect-ratio: 5.8 / 1;
-    overflow: hidden;
-    background: #000;
-  }
-  
-  .slogan-image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  
-  /* BANNER PHOENIX */
-  .main-banner {
-    display: block;
-    width: 100%;
-    aspect-ratio: 2 / 1;
-    overflow: hidden;
-    background: #000;
-  }
-  
-  .main-banner-image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+}
+
+/* LOGO APITOTO */
+.mobile-header {
+  display: block;
+  width: 100%;
+  background: #000;
+  overflow: hidden;
+}
+
+.header-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2.345 / 1;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* SLOGAN */
+.slogan-banner {
+  display: block;
+  width: 100%;
+  aspect-ratio: 5.8 / 1;
+  overflow: hidden;
+  background: #000;
+}
+
+.slogan-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* BANNER PHOENIX */
+.main-banner {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  background: #000;
+}
+
+.main-banner-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* TOMBOL LIVE CHAT */
+.livechat-button {
+  position: fixed;
+  right: 16px;
+  bottom: 18px;
+  z-index: 9999;
+
+  display: block;
+  width: 120px;
+  height: 120px;
+
+  border-radius: 50%;
+  filter: drop-shadow(0 4px 10px rgba(255, 90, 0, 0.55));
+
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.livechat-button img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+}
+
+.livechat-button:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 5px 14px rgba(255, 120, 0, 0.8));
+}
+
+.livechat-button:active {
+  transform: scale(0.95);
+}
+
+/* UKURAN DI HP */
+@media (max-width: 600px) {
+  .livechat-button {
+    right: 12px;
+    bottom: 14px;
+    width: 120px;
+    height: 120px;
   }
