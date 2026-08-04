@@ -78,5 +78,31 @@
     >
   </a>
 
+  <!-- TOMBOL LIVE CHAT NAGA -->
+<a
+href="#"
+class="livechat-button"
+onclick="bukaLiveChat(); return false;"
+aria-label="Buka Live Chat"
+>
+<img
+  src="https://i.postimg.cc/Gt8w8BXM/Livechat.png"
+  alt="Live Chat"
+>
+</a>
+
+<!-- KODE JIVOCHAT -->
+<script src="https://code.jivosite.com/widget/DCzCA84KPu" async></script>
+
+<script>
+function bukaLiveChat() {
+  if (window.jivo_api) {
+    jivo_api.open({ start: "chat" });
+  } else {
+    setTimeout(bukaLiveChat, 500);
+  }
+}
+</script>
+
 </body>
 </html>
