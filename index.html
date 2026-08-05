@@ -35,7 +35,7 @@
     >
   </section>
 
-  <!-- BANNER PHOENIX DAN SINGGASANA -->
+  <!-- BANNER UTAMA -->
   <section class="main-banner">
     <img
       src="https://i.postimg.cc/VN4mdL0H/banner-1.png"
@@ -61,22 +61,54 @@
     </a>
   </nav>
 
-  <!-- KONTEN BERIKUTNYA -->
   <main class="page-content"></main>
 
-  <!-- TOMBOL LIVE CHAT -->
+  <!-- TOMBOL GAMBAR LIVE CHAT -->
   <a
-    href="LINK-LIVECHAT"
+    href="#"
     class="livechat-button"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Buka layanan live chat"
+    onclick="bukaLiveChat(); return false;"
+    aria-label="Buka Live Chat APITOTO"
   >
     <img
       src="https://i.postimg.cc/Gt8w8BXM/Livechat.png"
-      alt="Live Chat"
+      alt="Live Chat APITOTO"
     >
   </a>
+
+  <!-- FUNGSI MEMBUKA TAWK.TO -->
+  <script>
+    function bukaLiveChat() {
+      if (
+        typeof Tawk_API !== "undefined" &&
+        typeof Tawk_API.maximize === "function"
+      ) {
+        Tawk_API.maximize();
+      } else {
+        alert("Live Chat sedang dimuat. Silakan coba kembali.");
+      }
+    }
+  </script>
+
+  <!-- Start of Tawk.to Script -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {};
+    var Tawk_LoadStart = new Date();
+
+    (function () {
+      var s1 = document.createElement("script");
+      var s0 = document.getElementsByTagName("script")[0];
+
+      s1.async = true;
+      s1.src =
+        "https://embed.tawk.to/6a72a04b6677831d43f6c326/1jv7s4a99";
+      s1.charset = "UTF-8";
+      s1.setAttribute("crossorigin", "*");
+
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+  <!-- End of Tawk.to Script -->
 
 </body>
 </html>
