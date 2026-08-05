@@ -63,7 +63,7 @@
 
   <main class="page-content"></main>
 
-  <!-- TOMBOL GAMBAR LIVE CHAT -->
+  <!-- TOMBOL GAMBAR LIVE CHAT APITOTO -->
   <a
     href="#"
     class="livechat-button"
@@ -76,25 +76,39 @@
     >
   </a>
 
-  <!-- FUNGSI MEMBUKA TAWK.TO -->
-  <script>
+  <!-- TAWK.TO LIVE CHAT -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {};
+    var Tawk_LoadStart = new Date();
+
+    /* Menyembunyikan logo/ikon bawaan Tawk.to */
+    Tawk_API.onBeforeLoad = function () {
+      Tawk_API.hideWidget();
+    };
+
+    Tawk_API.onLoad = function () {
+      Tawk_API.hideWidget();
+    };
+
+    /* Ikon bawaan tetap disembunyikan setelah chat diminimalkan */
+    Tawk_API.onChatMinimized = function () {
+      Tawk_API.hideWidget();
+    };
+
+    /* Membuka chat melalui tombol gambar APITOTO */
     function bukaLiveChat() {
       if (
-        typeof Tawk_API !== "undefined" &&
+        typeof Tawk_API.showWidget === "function" &&
         typeof Tawk_API.maximize === "function"
       ) {
+        Tawk_API.showWidget();
         Tawk_API.maximize();
       } else {
         alert("Live Chat sedang dimuat. Silakan coba kembali.");
       }
     }
-  </script>
 
-  <!-- Start of Tawk.to Script -->
-  <script type="text/javascript">
-    var Tawk_API = Tawk_API || {};
-    var Tawk_LoadStart = new Date();
-
+    /* Memuat widget Tawk.to */
     (function () {
       var s1 = document.createElement("script");
       var s0 = document.getElementsByTagName("script")[0];
@@ -108,7 +122,7 @@
       s0.parentNode.insertBefore(s1, s0);
     })();
   </script>
-  <!-- End of Tawk.to Script -->
+  <!-- END TAWK.TO LIVE CHAT -->
 
 </body>
 </html>
