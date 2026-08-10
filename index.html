@@ -61,7 +61,102 @@
     </a>
   </nav>
 
+  <!-- DUA BANNER BERSEBELAHAN -->
+  <div class="double-banner">
+
+  <div class="small-banner">
+
+  <div class="rtp-premium-banner">
+
+    <!-- BACKGROUND NAGA -->
+    <img
+      src="https://i.postimg.cc/MZnZ1QZM/Naga1.png"
+      alt="Naga RTP"
+      class="rtp-dragon-bg"
+    >
+
+
+    <!-- PANEL RTP KANAN -->
+    <div class="rtp-premium-panel">
+
+      <div class="rtp-premium-title">
+        <span class="rtp-dot"></span>
+        <span>RTP LIVE</span>
+      </div>
+
+
+      <div class="rtp-premium-label">
+        <span></span>
+        <b>MAHJONG WAYS II</b>
+        <span></span>
+      </div>
+
+
+      <strong id="rtpValue">
+        90%
+      </strong>
+
+
+      <div class="rtp-premium-progress">
+
+        <div
+          id="rtpBar"
+          class="rtp-premium-progress-bar"
+          style="width:90%;"
+        ></div>
+
+      </div>
+
+
+      <div class="rtp-scale">
+        <span>0%</span>
+        <span>25%</span>
+        <span>50%</span>
+        <span>75%</span>
+        <span>100%</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+  <div class="small-banner">
+
+</div>
+
+<!-- BINGKAI DAN VIDEO -->
+</div>
   <main class="page-content"></main>
+
+  <!-- BINGKAI DI BAWAH TOMBOL -->
+<main class="page-content">
+<!-- Konten promosi dapat ditambahkan di sini -->
+</main>
+
+<!-- LIVE CHAT -->
+<a
+href="#"
+class="livechat-button"
+onclick="bukaLiveChat(); return false;"
+aria-label="Buka Live Chat APITOTO"
+>
+<img
+  src="https://i.postimg.cc/Gt8w8BXM/Livechat.png"
+  alt="Live Chat APITOTO"
+>
+</a>
+
+<script>
+function bukaLiveChat() {
+  window.open(
+    "LINK-LIVECHAT",
+    "_blank",
+    "noopener,noreferrer"
+  );
+}
+</script>
 
   <!-- TOMBOL GAMBAR LIVE CHAT APITOTO -->
   <a
@@ -123,6 +218,271 @@
     })();
   </script>
   <!-- END TAWK.TO LIVE CHAT -->
+
+  <script>
+  const rtpValue = document.getElementById("rtpValue");
+  const rtpBar = document.getElementById("rtpBar");
+  
+  let currentRTP = 67;
+  
+  // ========================================
+  // JADWAL RANGE RTP
+  // ========================================
+  const jadwalRTP = [
+  
+    // 00:00 - 06:00
+    {
+      start: 0,
+      end: 360,
+      min: 60,
+      max: 75
+    },
+  
+    // 06:01 - 12:00
+    {
+      start: 361,
+      end: 720,
+      min: 60,
+      max: 75
+    }
+  
+  ];
+  
+  // Pergantian target setiap 7 detik
+  const RTP_DURATION = 7000;
+  
+  // Maksimal naik/turun tiap pergantian
+  const MAX_CHANGE = 2;
+  
+  
+  // ========================================
+  // CARI RANGE BERDASARKAN JAM
+  // ========================================
+  function getJadwalSekarang() {
+  
+    const sekarang = new Date();
+  
+    const totalMenit =
+      (sekarang.getHours() * 60) +
+      sekarang.getMinutes();
+  
+    return jadwalRTP.find(function(jadwal) {
+  
+      return (
+        totalMenit >= jadwal.start &&
+        totalMenit <= jadwal.end
+      );
+  
+    });
+  }
+  
+  
+  // ========================================
+  // WARNA BERDASARKAN PERSENTASE
+  // ========================================
+  function getRTPColor(value, jadwal) {
+  
+    const posisi =
+      (value - jadwal.min) /
+      (jadwal.max - jadwal.min);
+  
+    // 60% kuning → 75% hijau
+    const hue =
+      45 + (posisi * 65);
+  
+    return `hsl(${hue}, 100%, 50%)`;
+  }
+  
+  
+  // ========================================
+  // UPDATE ANGKA DAN BAR
+  // ========================================
+  function updateRTP(value) {
+  
+    const jadwal =
+      getJadwalSekarang();
+  
+    if (!jadwal) return;
+  
+    const color =
+      getRTPColor(value, jadwal);
+  
+  
+    rtpValue.textContent =
+      value.toFixed(1) + "%";
+  
+  
+    rtpValue.style.color =
+      color;
+  
+  
+    rtpValue.style.textShadow = `
+      0 0 4px ${color},
+      0 0 8px ${color},
+      0 0 14px ${color}
+    `;
+  
+  
+    rtpBar.style.width =
+      value + "%";
+  }
+  
+  
+  // ========================================
+  // TARGET PERSENTASE BERIKUTNYA
+  // ========================================
+  function getNextTarget() {
+  
+    const jadwal =
+      getJadwalSekarang();
+  
+    if (!jadwal) {
+      return currentRTP;
+    }
+  
+  
+    let perubahan =
+      (Math.random() * (MAX_CHANGE * 2))
+      - MAX_CHANGE;
+  
+  
+    // Supaya perubahan tetap terlihat
+    if (Math.abs(perubahan) < 0.6) {
+  
+      perubahan =
+        perubahan >= 0
+          ? 0.6
+          : -0.6;
+    }
+  
+  
+    let target =
+      currentRTP + perubahan;
+  
+  
+    // jangan di bawah minimum
+    if (target < jadwal.min) {
+      target = jadwal.min;
+    }
+  
+  
+    // jangan di atas maksimum
+    if (target > jadwal.max) {
+      target = jadwal.max;
+    }
+  
+  
+    return target;
+  }
+  
+  
+  // ========================================
+  // ANIMASI SMOOTH 7 DETIK
+  // ========================================
+  function animateRTP(target) {
+  
+    const nilaiAwal =
+      currentRTP;
+  
+    const waktuAwal =
+      performance.now();
+  
+  
+    function frame(now) {
+  
+      const elapsed =
+        now - waktuAwal;
+  
+  
+      const progress =
+        Math.min(
+          elapsed / RTP_DURATION,
+          1
+        );
+  
+  
+      // gerakan halus
+      const smooth =
+        progress *
+        progress *
+        (3 - (2 * progress));
+  
+  
+      currentRTP =
+        nilaiAwal +
+        (
+          (target - nilaiAwal)
+          * smooth
+        );
+  
+  
+      updateRTP(currentRTP);
+  
+  
+      if (progress < 1) {
+  
+        requestAnimationFrame(frame);
+  
+      } else {
+  
+        currentRTP = target;
+  
+        startRTP();
+  
+      }
+  
+    }
+  
+  
+    requestAnimationFrame(frame);
+  }
+  
+  
+  // ========================================
+  // MULAI RTP BERIKUTNYA
+  // ========================================
+  function startRTP() {
+  
+    const jadwal =
+      getJadwalSekarang();
+  
+  
+    if (!jadwal) {
+      return;
+    }
+  
+  
+    const target =
+      getNextTarget();
+  
+  
+    animateRTP(target);
+  }
+  
+  
+  // ========================================
+  // NILAI AWAL
+  // ========================================
+  const jadwalAwal =
+    getJadwalSekarang();
+  
+  
+  if (jadwalAwal) {
+  
+    currentRTP =
+      jadwalAwal.min +
+      Math.random() *
+      (
+        jadwalAwal.max -
+        jadwalAwal.min
+      );
+  
+  
+    updateRTP(currentRTP);
+  
+    startRTP();
+  }
+  </script>
 
 </body>
 </html>
